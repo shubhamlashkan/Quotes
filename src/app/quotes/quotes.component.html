@@ -1,0 +1,51 @@
+<nav>
+  <ul>
+    <li><button mat-button color="primary" (click)="getAllQuote()">All</button></li>
+    <li><button mat-button color="primary" (click)="getRandomQuote()">Random Quote</button></li>
+  </ul>
+</nav>
+
+
+
+<div *ngIf="showAllQuote">
+<div class="fluid-container">
+  <div class="row">
+    <div class="col-md-4 mt-4 mb-4 d-flex" *ngFor="let quote of quoteResult">
+
+      <div class="card h-100" >
+        <div class="card-body flex-fill" style="width: 18rem;">
+
+            <h2 style="text-align: center;">"{{quote.text}}"</h2>
+
+            <div *ngIf="quote.author">
+              <p style="text-align: center;">—{{quote.author}}</p>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div *ngIf="!showAllQuote" class="center">
+  <div class="fluid-container">
+    <div class="row">
+      <div >
+
+        <div class="card h-100" >
+          <div class="card-body flex-fill" >
+
+              <h1 style="text-align: center;">"{{quotes.text}}"</h1>
+
+              <div *ngIf="quotes.author">
+                <p style="text-align: center;">—{{quotes.author}}</p>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
