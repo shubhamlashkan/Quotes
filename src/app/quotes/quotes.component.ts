@@ -57,6 +57,11 @@ getAllQuote()
 
 getRandomQuote()
 {
+  for(var i=1;i<=6;i++)
+  {
+    var element = document.getElementById('images'+i+' '+i);
+    element?.remove();
+  }
   this.showAllQuote = false;
 
   let randomNumber = Math.floor(Math.random()*1642);
@@ -78,7 +83,7 @@ getRandomQuote()
     for(var i=1;i<=6;i++)
     {
       var canvas = <HTMLCanvasElement>document.getElementById('myCanvas'+i);
-      this.generateImage(text,canvas,this.BgcolorCodeList[i-1],this.fontcolorCodeList[i-1]);
+      this.generateImage(text,canvas,this.BgcolorCodeList[i-1],this.fontcolorCodeList[i-1],'images'+i,i);
     }
 
   })
@@ -86,7 +91,7 @@ getRandomQuote()
 }
 
 
-generateImage(text:any,canvas:any,BgcolorCodeList:any,fontcolorCodeList:any)
+generateImage(text:any,canvas:any,BgcolorCodeList:any,fontcolorCodeList:any,imagediv:any,num:any)
 {
   //var canvas = <HTMLCanvasElement>document.getElementById('myCanvas1');
     var maxWidth =0;
@@ -140,10 +145,11 @@ generateImage(text:any,canvas:any,BgcolorCodeList:any,fontcolorCodeList:any)
   this.ctx.font = '16pt Calibri';
   this.ctx.fillStyle = fontcolorCodeList;
   this.wrapText(this.ctx, text, x, y, maxWidth, lineHeight);
- /* var img = new Image();
+  var img = new Image();
   img.src = canvas.toDataURL();
-  var imgDiv = document.getElementById('images');
-  imgDiv?.appendChild(img);*/
+  img.id = imagediv+' '+num;
+  var imgDiv = document.getElementById(imagediv);
+  imgDiv?.appendChild(img);
 }
 
 wrapText(context:any, text:any, x:any, y:any, maxWidth:any, lineHeight:any) {
@@ -153,7 +159,7 @@ wrapText(context:any, text:any, x:any, y:any, maxWidth:any, lineHeight:any) {
   for(var n = 0; n < words.length; n++) {
     var testLine = line + words[n] + ' ';
     var metrics = context.measureText(testLine);
-    console.log(metrics);
+
     var testWidth = metrics.width;
     if (testWidth > maxWidth && n > 0) {
       context.fillText(line, x, y);
