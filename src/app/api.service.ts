@@ -12,4 +12,5 @@ export class APIService {
   {
     return this.http.get('https://type.fit/api/quotes');
   }
+
 }

@@ -4,8 +4,9 @@
     <li><button type="button" class="btn btn-outline-warning btn-lg" (click)="getRandomQuote()">Random Quote</button></li>
   </ul>
 </nav>
-
-
+<!--
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3; background-color: white;">
+  Your browser does not support the HTML5 canvas tag.</canvas> -->
 
 
 
@@ -45,9 +46,49 @@
                 <p style="text-align: center;">—{{quotes.author}}</p>
               </div>
 
-          </div>
+            </div>
         </div>
       </div>
     </div>
   </div>
   </div>
+
+  <div *ngIf="!showAllQuote" class="fluid-container center" id="images">
+    <div class="row">
+      <div class="col-lg-4 col-md-4">
+        <canvas id="myCanvas1">
+          Your browser does not support the HTML5 canvas tag.</canvas>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <canvas id="myCanvas2" >
+          Your browser does not support the HTML5 canvas tag.</canvas>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <canvas id="myCanvas3" >
+          Your browser does not support the HTML5 canvas tag.</canvas>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-lg-4 col-md-4">
+        <canvas id="myCanvas4" >
+          Your browser does not support the HTML5 canvas tag.</canvas>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <canvas id="myCanvas5">
+          Your browser does not support the HTML5 canvas tag.</canvas>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <canvas id="myCanvas6" >
+          Your browser does not support the HTML5 canvas tag.</canvas>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+
+
+
