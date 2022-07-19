@@ -23,13 +23,13 @@ ngOnInit() {
   this.showAllQuote = true;
   this.getAllQuote();
   this.BgcolorCodeList[0] = '#FFFFFF';
-  this.BgcolorCodeList[1] = '#5ba19b';
+  this.BgcolorCodeList[1] = '#576F72';
   this.BgcolorCodeList[2] = '#0f4c75';
-  this.BgcolorCodeList[3] = '#7D9D9C;';
+  this.BgcolorCodeList[3] = '#000000';
   this.BgcolorCodeList[4] ='#34495e';
   this.BgcolorCodeList[5] ='#042f4b';
   this.fontcolorCodeList[0] ='#000000';
-  this.fontcolorCodeList[1] ='#000000';
+  this.fontcolorCodeList[1] ='#FFFFFF';
   this.fontcolorCodeList[2] ='#FFFFFF';
   this.fontcolorCodeList[3] ='#FFFFFF';
   this.fontcolorCodeList[4] ='#FFFFFF';
@@ -57,6 +57,11 @@ getAllQuote()
 
 getRandomQuote()
 {
+  var anchorTag = document.getElementById('tweetLink');
+  if(anchorTag!=null)
+  {
+    anchorTag.remove();
+  }
   for(var i=1;i<=6;i++)
   {
     var element = document.getElementById('images'+i+' '+i);
@@ -79,7 +84,18 @@ getRandomQuote()
     {
       var text = '"'+this.quotes.text+'" \n — '+this.quotes.author;
     }
-
+    var a = document.createElement('a');
+    var link = document.createTextNode("Tweet this");
+    a.appendChild(link);
+    a.title = "Tweet this";
+    a.id = 'tweetLink';
+    a.target='_blank';
+    a.style.float = 'right';
+    a.style.textDecoration = 'none';
+    a.style.fontSize = '1rem';
+    a.href = 'https://twitter.com/intent/tweet?text='+text;
+    var randomQuoteDiv = document.getElementById('randomQuoteDiv');
+    randomQuoteDiv?.appendChild(a);
     for(var i=1;i<=6;i++)
     {
       var canvas = <HTMLCanvasElement>document.getElementById('myCanvas'+i);
@@ -101,14 +117,14 @@ generateImage(text:any,canvas:any,BgcolorCodeList:any,fontcolorCodeList:any,imag
       canvas.width = 200;
       canvas.height = 200;
       maxWidth = canvas.width -10;
-      y = 70;
+      y = 90;
     }
     else if(text.length>=70 && text.length<90)
     {
       canvas.width = 230;
       canvas.height = 230;
       maxWidth = canvas.width -10;
-      y = 70;
+      y = 90;
     }
     else if(text.length>=90 && text.length<170)
     {
