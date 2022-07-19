@@ -93,7 +93,8 @@ getRandomQuote()
     a.style.float = 'right';
     a.style.textDecoration = 'none';
     a.style.fontSize = '1rem';
-    a.href = 'https://twitter.com/intent/tweet?text='+text;
+    var finaltext = text + '%0A%0A'+'More Quotes => https://quotes-sl.vercel.app/'+'%0A%0A'+'Developed By: @shubhamlashkan';
+    a.href = 'https://twitter.com/intent/tweet?text='+finaltext;
     var randomQuoteDiv = document.getElementById('randomQuoteDiv');
     randomQuoteDiv?.appendChild(a);
     for(var i=1;i<=6;i++)
