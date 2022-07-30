@@ -165,9 +165,17 @@ generateImage(text:any,canvas:any,BgcolorCodeList:any,fontcolorCodeList:any,imag
   var img = new Image();
   img.src = canvas.toDataURL();
   img.id = imagediv+' '+num;
+  img.onclick = function()
+  {
+    return downloadQuote(canvas);
+  }
   var imgDiv = document.getElementById(imagediv);
   imgDiv?.appendChild(img);
+
+
 }
+
+
 
 wrapText(context:any, text:any, x:any, y:any, maxWidth:any, lineHeight:any) {
   var words = text.split(' ');
@@ -191,3 +199,10 @@ wrapText(context:any, text:any, x:any, y:any, maxWidth:any, lineHeight:any) {
 }
 
 }
+function downloadQuote(canvas:any): any {
+  var link = document.createElement('a');
+  link.download = 'quote.png';
+  link.href = canvas.toDataURL()
+  link.click();
+}
+
